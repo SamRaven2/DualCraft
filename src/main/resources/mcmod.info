@@ -5,11 +5,11 @@
   "description": "Swapping between workbenches is a thing of the past.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "http://minecraft.curseforge.com/mc-mods/229344-dualcraft",
   "updateUrl": "",
   "authorList": ["Bats"],
   "credits": "Bats",
-  "logoFile": "",
+  "logoFile": "/banner.png",
   "screenshots": [],
   "dependencies": []
 }
