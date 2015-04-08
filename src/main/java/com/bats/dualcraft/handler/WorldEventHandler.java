@@ -24,7 +24,7 @@ public class WorldEventHandler
         int y = event.y;
         int z = event.z;
 
-        if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && !player.isSneaking())
+        if ((event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) && (!player.isSneaking()))
         {
             Block clickedBlock = world.getBlock(x, y, z);
             if (clickedBlock == Blocks.crafting_table)
