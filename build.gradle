@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'forge'
+apply plugin: 'curseforge'
+apply plugin: 'maven'
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+	def prop = new Properties()
+	prop.load(it)
+	project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = config.mod_version
+group= "com.bats.dualcraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "DualCraft"
+
+minecraft {
+    version = config.minecraft_version + "-" + config.forge_version
+	
+	replaceIn "reference/Reference.java"
+	replace "@VERSION@", "${config.mod_version}"
+}
+
+task buildInfo {
+	def cmd = "git rev-parse --short HEAD"
+    def proc = cmd.execute()
+    proc.waitFor()
+    if (proc.exitValue() == 0) {
+        ext.revision = proc.text.trim()
+    } else {
+        ext.revision = "GITBORK"
+    }
+	
+	ext.buildNum = "DEV.${project.buildInfo.revision}"
+}
+
+version = "${config.minecraft_version}-${config.mod_version}-${project.buildInfo.revision}"
+
+processResources{
+	
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+	
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		
+		expand 'version': project.version, 'mcversion': project.minecraft.version
+	}
+	
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}  
+}

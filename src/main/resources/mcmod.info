@@ -1,0 +1,16 @@
+[
+{
+  "modid": "DualCraft",
+  "name": "DualCraft",
+  "description": "Swapping between workbenches is a thing of the past.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Bats"],
+  "credits": "Bats",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
