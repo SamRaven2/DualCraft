@@ -1,5 +1,6 @@
 package com.bats.dualcraft.integration;
 
+import codechicken.nei.OffsetPositioner;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.recipe.DefaultOverlayHandler;
@@ -16,8 +17,8 @@ public class NEIDualCraftConfig implements IConfigureNEI
     public void loadConfig()
     {
         LogHelper.info("Supporting NEI...");
-        API.registerGuiOverlay(GuiDualCraft.class, "crafting", 6, 7);
-        API.registerGuiOverlayHandler(GuiDualCraft.class, new DefaultOverlayHandler(6,7), "crafting");
+        API.registerGuiOverlay(GuiDualCraft.class, "crafting", new OffsetPositioner(1, 0));
+        API.registerGuiOverlayHandler(GuiDualCraft.class, new DefaultOverlayHandler(1,0), "crafting");
     }
 
     @Override
