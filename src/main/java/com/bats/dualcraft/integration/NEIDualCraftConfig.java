@@ -16,9 +16,9 @@ public class NEIDualCraftConfig implements IConfigureNEI
     @Override
     public void loadConfig()
     {
-        LogHelper.info("Supporting NEI...");
-        API.registerGuiOverlay(GuiDualCraft.class, "crafting", new OffsetPositioner(1, 0));
-        API.registerGuiOverlayHandler(GuiDualCraft.class, new DefaultOverlayHandler(1,0), "crafting");
+        LogHelper.info("Trying to Support NEI...");
+        API.registerGuiOverlay(GuiDualCraft.class, "crafting", new OffsetPositioner(5,11));
+        API.registerGuiOverlayHandler(GuiDualCraft.class, new DefaultOverlayHandler(), "crafting");
     }
 
     @Override
