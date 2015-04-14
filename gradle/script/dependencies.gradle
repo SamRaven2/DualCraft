@@ -1,0 +1,13 @@
+repositories {
+
+    maven {
+        name 'CB Maven FS'
+        url "http://chickenbones.net/maven/"
+    }
+}
+
+dependencies {
+    compile "codechicken:CodeChickenLib:${config.minecraft_version}-${config.CCLib_version}:dev"
+    compile "codechicken:CodeChickenCore:${config.minecraft_version}-${config.CCCore_version}:dev"
+    compile "codechicken:NotEnoughItems:${config.minecraft_version}-${config.NEI_version}:dev"
+}
